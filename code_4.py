@@ -16,7 +16,7 @@ def get_big_mac_price_by_country(country_code):
 
 def get_the_cheapest_big_mac_price_by_year(year):
     filter_df = df[df['date'] == year]
-    min_price = int(filter_df['dollar_price'].min())
+    min_price = (filter_df['dollar_price'].min())
     cheapest_row = min_price[filter_df['dollar_price'] == min_price['dollar_price'].iloc[0]]
     return round(cheapest_row,2)
 
