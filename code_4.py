@@ -19,21 +19,20 @@ def get_big_mac_price_by_country(country_code):
 
 def get_the_cheapest_big_mac_price_by_year(year):
     filter_df = df[df['date'] == year]
-    cheapest_row = filter_df.loc[filter_df['dollar_price'].idxmin()]
-    country_name = cheapest_row['name']
-    country_code = cheapest_row['iso_a3']
-    dollar_price = cheapest_row['dollar_price']
-    return f"{country_name}({country_code}): ${round(dollar_price, 2)}"
+    min_value = filter_df['date'].min()
+    return round(min_value,2)
+    # cheapest_row = filter_df.loc[filter_df['dollar_price'].idxmin()]
+    # country_name = cheapest_row['name']
+    # country_code = cheapest_row['iso_a3']
+    # dollar_price = cheapest_row['dollar_price']
+    # return f"{country_name}({country_code}): ${round(dollar_price, 2)}"
 
 def get_the_most_expensive_big_mac_price_by_year(year):
     filter_df = df[df['date'] == year]
-    if filter_df.empty:
-        return "No data available for the specified year."
-    else:
-        expensive_row = filter_df.loc[filter_df['dollar_price'].idxmax()]
-        country_name = expensive_row['name']
-        country_code = expensive_row['iso_a3']
-        dollar_price = expensive_row['dollar_price']
+    expensive_row = filter_df[filter_df['dollar_price'].max()]
+    country_name = expensive_row['name']
+    country_code = expensive_row['iso_a3']
+    dollar_price = expensive_row['dollar_price']
     return f"{country_name}({country_code}): ${round(dollar_price, 2)}"
 
 if __name__ == "__main__":
