@@ -31,7 +31,7 @@ def get_the_most_expensive_big_mac_price_by_year(year):
     return f"{country_name}({country_code}): ${round(dollar_price, 2)}"
 
 if __name__ == "__main__":
-    print(get_big_mac_price_by_year(2006,'MEX'))
+    print(get_big_mac_price_by_year(2006,'arg'))
     print(get_big_mac_price_by_country('MEX'))
     print(get_the_cheapest_big_mac_price_by_year(2008))
     print(get_the_most_expensive_big_mac_price_by_year(2003))
