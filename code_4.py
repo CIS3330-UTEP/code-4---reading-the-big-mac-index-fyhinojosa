@@ -14,7 +14,8 @@ def get_big_mac_price_by_year(year,country_code):
  'THA' 'TWN' 'USA' 'ZAF' 'PHL' 'NOR' 'PER' 'TUR' 'VEN' 'EGY' 'COL' 'CRI'
  'LKA' 'PAK' 'SAU' 'UKR' 'URY' 'ARE' 'IND' 'VNM' 'AZE' 'BHR' 'GTM' 'HND'
  'HRV' 'JOR' 'KWT' 'LBN' 'MDA' 'NIC' 'OMN' 'QAT' 'ROU']
-    filter_df = df[df['iso_a3'].str.lower() == country_code] & df[(df['date'] == year)]
+    filter_df = df[df['date'].str.startswith(str(year))] & df[df['iso_a3'].str.lower() == country_code]
+    # filter_df = df[df[country_codes].str.lower() == country_code] & df[(df['date'] == year)]
     return round(filter_df,2)
     
 
