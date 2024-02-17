@@ -15,8 +15,9 @@ def get_big_mac_price_by_year(year,country_code):
  'LKA' 'PAK' 'SAU' 'UKR' 'URY' 'ARE' 'IND' 'VNM' 'AZE' 'BHR' 'GTM' 'HND'
  'HRV' 'JOR' 'KWT' 'LBN' 'MDA' 'NIC' 'OMN' 'QAT' 'ROU']
     filter_df = df[(df['date'].str.startswith(str(year))) & (df['iso_a3'].str.lower() == country_code.lower())]
+    mean_price = filter_df['dollar_price'].mean()
     # filter_df = df[df[country_codes].str.lower() == country_code] & df[(df['date'] == year)]
-    return round(filter_df,2)
+    return round(mean_price,2)
     
 
     # filter_df_year = df[df['date'] == year]
@@ -56,14 +57,14 @@ def get_the_most_expensive_big_mac_price_by_year(year):
 
 if __name__ == "__main__":
     function_1 = get_big_mac_price_by_year(2000,'bra')
-    # print(function_1)
+    print(function_1)
 
     function_2 = get_big_mac_price_by_country('ind')
-    # print(function_2)
+    print(function_2)
 
     fucntion_3 = (get_the_cheapest_big_mac_price_by_year(2012))
     print(fucntion_3)
 
     function_4 = (get_the_most_expensive_big_mac_price_by_year(2003))
-    # print(function_4)
+    print(function_4)
 
