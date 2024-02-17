@@ -44,13 +44,13 @@ def get_the_cheapest_big_mac_price_by_year(year):
     return f"{country_name}({country_code}): ${round(dollar_price, 2)}"
 
 def get_the_most_expensive_big_mac_price_by_year(year):
-    filter_df = df[df['date'] == year]
-    # max_value = filter_df[df['dollar_price'].max()]
-    # return round(max_value)
-    expensive_row = filter_df[filter_df['dollar_price'].max()]
-    country_name = expensive_row['name']
-    country_code = expensive_row['iso_a3']
-    dollar_price = expensive_row['dollar_price']
+    filter_df = df[df['date'].str.startswith(str(year))]
+    max_price = filter_df['dollar_price'].max()
+    cheapest_row = filter_df[filter_df['dollar_price'] == max_price].iloc[0]
+    country_name = cheapest_row['name']
+    country_code = cheapest_row['iso_a3']
+    dollar_price = cheapest_row['dollar_price']
+
     return f"{country_name}({country_code}): ${round(dollar_price, 2)}"
 
 if __name__ == "__main__":
